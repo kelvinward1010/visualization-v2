@@ -9,3 +9,8 @@ createRoot(document.getElementById("root")!).render(
         <RouterProvider router={routerConfig} />
     </StrictMode>,
 );
+
+// Reload the page when the i18n file changes
+if (import.meta.hot) {
+    import.meta.hot.accept(["./locale/i18n"], () => {});
+}
