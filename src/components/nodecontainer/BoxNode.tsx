@@ -8,7 +8,7 @@ type BoxNodeProps = {
     style?: CSSProperties;
 };
 
-const BoxNode: React.FC<BoxNodeProps> = ({
+export const BoxNode: React.FC<BoxNodeProps> = ({
     selected,
     theme,
     className,
@@ -27,4 +27,21 @@ const BoxNode: React.FC<BoxNodeProps> = ({
     );
 };
 
-export default BoxNode;
+interface StackNodeProps {
+    children: ReactNode;
+}
+
+export function StackNode({ children }: StackNodeProps) {
+    return (
+        <div
+            style={{
+                padding: "4px",
+                display: "flex",
+                justifyContent: "space-between",
+            }}
+            className="custom-drag-handle"
+        >
+            {children}
+        </div>
+    );
+}

@@ -18,9 +18,11 @@ import { select, Selection } from "d3-selection";
 import { produce } from "immer";
 import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
-import styled from "styled-components";
-import BoxNode from "./BoxNode";
+import { BoxNode, StackNode } from "./BoxNode";
 import useThemeMode from "@/hooks/useThemeMode";
+import { Card, Flex, Typography } from "antd";
+import { CloseOutlined, HolderOutlined } from "@ant-design/icons";
+import ModalData from "../modals/ModalData";
 
 interface NodeContainerProps {
     children?: React.ReactNode;
@@ -45,6 +47,8 @@ const controlStyle = {
     background: "transparent",
     border: "none",
 };
+
+const { Text } = Typography;
 
 function NodeContainer({
     children,
@@ -216,11 +220,26 @@ function NodeContainer({
                     isConnectable={isConnectable}
                 />
             )}
-            <div>
-                {label}
+            <Card
+                className={`${isDarkMode ? "dark" : "light"} ${className}`}
+                style={{
+                    width: "100%",
+                    height: "100%",
+                }}
+            >
+                <StackNode>
+                    <Flex justify={"center"} align={"center"}>
+                        <HolderOutlined />
+                        <Text>{label}</Text>
+                    </Flex>
+                    <Flex justify={"center"} align={"center"}>
+                        <ModalData />
+                        <CloseOutlined onClick={handleDeleteNode} />
+                    </Flex>
+                </StackNode>
                 content
                 {childrenWithProps}
-            </div>
+            </Card>
             {!OUTPUT_TYPE_NODE.includes(type) && (
                 <Handle
                     type="source"
