@@ -3,6 +3,35 @@
     height: 100%;
 }
 
+/*CSS mode dark - bright*/
+:root {
+    --bg: white;
+    --primary: #fadb14;
+    --node-border: #1677ff;
+    --bg-node: black;
+    --text-color: white;
+}
+
+.dark-theme {
+    --bg: black;
+    --primary: #52c41a;
+    --node-border: teal;
+    --bg-node: white;
+    --text-color: black;
+}
+
+.node-container {
+    background-color: var(--bg-node);
+    color: var(--text-color);
+}
+
+.react-flow__handle {
+    z-index: 2;
+    border-radius: unset;
+    border: none;
+    background-color: var(--primary);
+}
+
 /* Rotate handler */
 .rotateHandle {
     position: absolute;

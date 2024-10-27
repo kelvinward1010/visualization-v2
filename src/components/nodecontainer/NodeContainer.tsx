@@ -19,6 +19,8 @@ import { produce } from "immer";
 import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import BoxNode from "./BoxNode";
+import useThemeMode from "@/hooks/useThemeMode";
 
 interface NodeContainerProps {
     children?: React.ReactNode;
@@ -56,6 +58,7 @@ function NodeContainer({
     type,
     selected,
 }: NodeContainerProps) {
+    const { isDarkMode } = useThemeMode();
     const rotateControlRef = useRef<any | null>(null);
     const updateNodeInternals = useUpdateNodeInternals();
     const [rotation, setRotation] = useState(0);
@@ -174,11 +177,13 @@ function NodeContainer({
     }, [id, updateNodeInternals]);
 
     return (
-        <div
+        <BoxNode
             style={{
                 transform: `rotate(${rotation}deg)`,
             }}
             className={className}
+            theme={isDarkMode ? "dark" : "light"}
+            selected={selected}
         >
             {resizable && (
                 <NodeResizer
@@ -224,7 +229,7 @@ function NodeContainer({
                     isConnectable={isConnectable}
                 />
             )}
-        </div>
+        </BoxNode>
     );
 }
 
@@ -233,33 +238,6 @@ export default NodeContainer;
 export const INPUT_TYPE_NODE = ["example-data", "file", "http", "paste"];
 export const TRANSFORM_TYPE_NODE = ["slice", "filter", "export"];
 export const OUTPUT_TYPE_NODE = ["group-chart"];
-
-interface NodeBoxProps {
-    selected?: boolean;
-    theme: {
-        primary: string;
-        nodeBorder: string;
-        bgNode: string;
-        textColor: string;
-        colorbuttonImg: string;
-    };
-}
-
-const NodeBox = styled.div<NodeBoxProps>`
-    .react-flow__handle {
-        z-index: 2;
-        border-radius: unset;
-        border: none;
-        background-color: ${(props) => (props.selected ? props.theme.primary : props.theme.nodeBorder)};
-    }
-    .node-container{
-        background-color: ${(props) => props.theme.bgNode}
-        color: ${(props) => props.theme.textColor}
-    }
-    .ant-upload{
-        color: ${(props) => props.theme.colorbuttonImg}
-    }
-`;
 
 function ResizeIcon() {
     return (
