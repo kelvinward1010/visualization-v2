@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useRef, useState } from "react";
 import {
     ReactFlow,
     useNodesState,
@@ -12,6 +12,8 @@ import {
     Connection,
     Edge,
     Node,
+    OnNodesChange,
+    OnEdgesChange,
 } from "@xyflow/react";
 import "./VisualizationPage.css";
 import { nanoid } from "nanoid";
@@ -23,11 +25,22 @@ const edgeTypes = {
     edgescontainer: EdgesContainer,
 };
 
+type NodeType = Node;
+type EdgeType = Edge;
+
 export function VisualizationPage() {
     const setValueAtom = useSetRecoilState(atomState);
     const reactFlowWrapper = useRef<HTMLDivElement>(null);
-    const [nodes, setNodes, onNodesChange] = useNodesState<any | never[]>([]);
-    const [edges, setEdges, onEdgesChange] = useEdgesState<any | never[]>([]);
+    const [nodes, setNodes, onNodesChange]: [
+        NodeType[],
+        Dispatch<SetStateAction<NodeType[]>>,
+        OnNodesChange<NodeType>,
+    ] = useNodesState<NodeType>([]);
+    const [edges, setEdges, onEdgesChange]: [
+        EdgeType[],
+        Dispatch<SetStateAction<any[]>>,
+        OnEdgesChange<EdgeType>,
+    ] = useEdgesState<EdgeType>([]);
     const [hidden, setHidden] = useState(false);
     const [reactFlowInstance, setReactFlowInstance] = useState<any | null>(
         null,
