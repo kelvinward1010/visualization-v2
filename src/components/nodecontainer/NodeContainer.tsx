@@ -233,7 +233,7 @@ function NodeContainer({
                         <Text>{label}</Text>
                     </Flex>
                     <Flex justify={"center"} align={"center"}>
-                        <ModalData />
+                        <ModalData data={atom} />
                         <CloseOutlined onClick={handleDeleteNode} />
                     </Flex>
                 </StackNode>
