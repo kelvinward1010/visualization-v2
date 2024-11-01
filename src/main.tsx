@@ -5,10 +5,13 @@ import "@xyflow/react/dist/style.css";
 import "./assets/css/main.css";
 import { RouterProvider } from "react-router-dom";
 import { routerConfig } from "./routes/index.tsx";
+import { RecoilRoot } from "recoil";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-        <RouterProvider router={routerConfig} />
+        <RecoilRoot>
+            <RouterProvider router={routerConfig} />
+        </RecoilRoot>
     </StrictMode>,
 );
 

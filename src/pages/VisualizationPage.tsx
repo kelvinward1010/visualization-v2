@@ -50,7 +50,6 @@ export function VisualizationPage() {
     ] = useEdgesState<EdgeType>([]);
     const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
     //const selectedNodes = Array.from(nodes).filter((n: Node) => n.selected);
-    console.log(nodes);
 
     const onConnect = useCallback(
         (connection: Connection) => {
@@ -97,25 +96,27 @@ export function VisualizationPage() {
             // check if the dropped element is valid
             if (!type) return;
 
-            const position = reactFlowInstance?.project({
-                x: event.clientX - reactFlowBounds.left,
-                y: event.clientY - reactFlowBounds.top,
-            });
+            if (reactFlowBounds) {
+                // Check if instance exists before using project
+                const position = reactFlowInstance.screenToFlowPosition({
+                    x: event.clientX - reactFlowBounds.left,
+                    y: event.clientY - reactFlowBounds.top,
+                });
+                const newNode: Node = {
+                    id: nanoid(),
+                    type,
+                    position,
+                    sourcePosition: Position.Right,
+                    targetPosition: Position.Left,
+                    dragHandle: ".custom-drag-handle",
+                    data: {},
+                };
 
-            const newNode: Node = {
-                id: nanoid(),
-                type,
-                position,
-                sourcePosition: Position.Right,
-                targetPosition: Position.Left,
-                dragHandle: ".custom-drag-handle",
-                data: {},
-            };
-
-            setNodes((nds: Node[]) => nds.concat(newNode));
-            setValueAtom((oldAtom) =>
-                oldAtom.concat({ id: newNode.id, type, data: {} }),
-            );
+                setNodes((nds: Node[]) => nds.concat(newNode));
+                setValueAtom((oldAtom) =>
+                    oldAtom.concat({ id: newNode.id, type, data: {} }),
+                );
+            }
         },
         [reactFlowInstance, setNodes, setValueAtom],
     );
