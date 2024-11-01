@@ -29,11 +29,11 @@ interface NodeContainerProps {
     label?: string;
     resizable?: boolean;
     rotatable?: boolean;
-    id: string;
+    id?: string;
     isConnectable?: boolean;
     isLeftHandle?: boolean;
     className?: string;
-    type: string;
+    type?: string;
     selected?: boolean;
 }
 
@@ -76,7 +76,7 @@ function NodeContainer({
     function handleDeleteNode() {
         const { onNodesDelete, onNodesChange, onEdgesChange, onEdgesDelete } =
             store.getState();
-        const node: Node | undefined = getNode(id);
+        const node: Node | undefined = getNode(String(id));
         if (!node) {
             return;
         }
@@ -170,7 +170,7 @@ function NodeContainer({
             const rad = Math.atan2(dx, dy);
             const deg = rad * (180 / Math.PI);
             setRotation(180 - deg);
-            updateNodeInternals(id);
+            updateNodeInternals(String(id));
         });
 
         selection.call(dragHandler);
@@ -240,7 +240,7 @@ function NodeContainer({
                 content
                 {childrenWithProps}
             </Card>
-            {!OUTPUT_TYPE_NODE.includes(type) && (
+            {!OUTPUT_TYPE_NODE.includes(String(type)) && (
                 <Handle
                     type="source"
                     position={Position.Right}

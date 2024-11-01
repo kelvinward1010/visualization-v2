@@ -14,12 +14,19 @@ import {
     Node,
     OnNodesChange,
     OnEdgesChange,
+    Background,
 } from "@xyflow/react";
 import "./VisualizationPage.css";
 import { nanoid } from "nanoid";
 import { atomState } from "@/store/atom";
 import { useSetRecoilState } from "recoil";
 import EdgesContainer from "@/components/edgecontainer/EdgeContainer";
+import SideBar from "@/components/sidebar";
+import { FileDataWrapper } from "@/components/nodes";
+
+const nodeTypes = {
+    file: FileDataWrapper as any,
+};
 
 const edgeTypes = {
     edgescontainer: EdgesContainer,
@@ -30,7 +37,7 @@ type EdgeType = Edge;
 
 export function VisualizationPage() {
     const setValueAtom = useSetRecoilState(atomState);
-    const reactFlowWrapper = useRef<HTMLDivElement>(null);
+    const reactFlowWrapper = useRef<HTMLDivElement | null>(null);
     const [nodes, setNodes, onNodesChange]: [
         NodeType[],
         Dispatch<SetStateAction<NodeType[]>>,
@@ -41,11 +48,9 @@ export function VisualizationPage() {
         Dispatch<SetStateAction<any[]>>,
         OnEdgesChange<EdgeType>,
     ] = useEdgesState<EdgeType>([]);
-    const [hidden, setHidden] = useState(false);
-    const [reactFlowInstance, setReactFlowInstance] = useState<any | null>(
-        null,
-    );
+    const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
     //const selectedNodes = Array.from(nodes).filter((n: Node) => n.selected);
+    console.log(nodes);
 
     const onConnect = useCallback(
         (connection: Connection) => {
@@ -92,7 +97,7 @@ export function VisualizationPage() {
             // check if the dropped element is valid
             if (!type) return;
 
-            const position = reactFlowInstance.project({
+            const position = reactFlowInstance?.project({
                 x: event.clientX - reactFlowBounds.left,
                 y: event.clientY - reactFlowBounds.top,
             });
@@ -117,46 +122,29 @@ export function VisualizationPage() {
 
     return (
         <div className="visualize">
-            <ReactFlow
-                nodes={nodes}
-                edges={edges}
-                onNodesChange={onNodesChange}
-                onEdgesChange={onEdgesChange}
-                onInit={setReactFlowInstance}
-                onConnect={onConnect}
-                onDrop={onDrop}
-                onDragOver={onDragOver}
-                onReconnect={onEdgeUpdate}
-                edgeTypes={edgeTypes}
-                fitView
-            >
-                <MiniMap />
-                <Controls />
-
-                <div
-                    style={{
-                        position: "absolute",
-                        left: 10,
-                        top: 10,
-                        zIndex: 4,
-                    }}
-                >
-                    <div>
-                        <label htmlFor="ishidden">
-                            isHidden
-                            <input
-                                id="ishidden"
-                                type="checkbox"
-                                checked={hidden}
-                                onChange={(event) =>
-                                    setHidden(event.target.checked)
-                                }
-                                className="react-flow__ishidden"
-                            />
-                        </label>
-                    </div>
+            <div className="dndflow">
+                <SideBar />
+                <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+                    <ReactFlow
+                        nodes={nodes}
+                        edges={edges}
+                        onNodesChange={onNodesChange}
+                        onEdgesChange={onEdgesChange}
+                        onInit={setReactFlowInstance}
+                        onConnect={onConnect}
+                        onDrop={onDrop}
+                        onDragOver={onDragOver}
+                        onReconnect={onEdgeUpdate}
+                        edgeTypes={edgeTypes}
+                        nodeTypes={nodeTypes}
+                        fitView
+                    >
+                        <MiniMap />
+                        <Controls />
+                        <Background bgColor="black" />
+                    </ReactFlow>
                 </div>
-            </ReactFlow>
+            </div>
         </div>
     );
 }
