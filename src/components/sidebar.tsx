@@ -39,7 +39,7 @@ const SideBar: React.FC = () => {
     ];
 
     return (
-        <aside style={{ width: 256 }}>
+        <aside style={{ width: "auto" }}>
             <Button
                 type="primary"
                 onClick={toggleCollapsed}

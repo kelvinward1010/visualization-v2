@@ -18,9 +18,9 @@ import { select, Selection } from "d3-selection";
 import { produce } from "immer";
 import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
-import { BoxNode, StackNode } from "./BoxNode";
+import { BoxNode, CardBox, StackNode } from "./BoxNode";
 import useThemeMode from "@/hooks/useThemeMode";
-import { Card, Flex, Typography } from "antd";
+import { Flex, Typography } from "antd";
 import { CloseOutlined, HolderOutlined } from "@ant-design/icons";
 import ModalData from "../modals/ModalData";
 
@@ -182,9 +182,7 @@ function NodeContainer({
 
     return (
         <BoxNode
-            style={{
-                transform: `rotate(${rotation}deg)`,
-            }}
+            style={{ transform: `rotate(${rotation}deg)` }}
             className={className}
             theme={isDarkMode ? "dark" : "light"}
             selected={selected}
@@ -220,26 +218,19 @@ function NodeContainer({
                     isConnectable={isConnectable}
                 />
             )}
-            <Card
-                className={`${isDarkMode ? "dark" : "light"} ${className}`}
-                style={{
-                    width: "100%",
-                    height: "100%",
-                }}
-            >
+            <CardBox>
                 <StackNode>
                     <Flex justify={"center"} align={"center"}>
                         <HolderOutlined />
                         <Text>{label}</Text>
                     </Flex>
-                    <Flex justify={"center"} align={"center"}>
+                    <Flex gap={6} justify={"center"} align={"center"}>
                         <ModalData data={atom} />
                         <CloseOutlined onClick={handleDeleteNode} />
                     </Flex>
                 </StackNode>
-                content
                 {childrenWithProps}
-            </Card>
+            </CardBox>
             {!OUTPUT_TYPE_NODE.includes(String(type)) && (
                 <Handle
                     type="source"
