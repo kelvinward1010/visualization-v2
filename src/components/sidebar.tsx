@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import {
-    ContainerOutlined,
-    DesktopOutlined,
+    BorderOuterOutlined,
+    FileAddOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    PieChartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
@@ -30,12 +29,26 @@ const SideBar: React.FC = () => {
 
     const items: MenuItem[] = [
         {
-            key: "1",
-            icon: <PieChartOutlined />,
-            label: <FileDataWrapper.Sidebar onDragStart={onDragStart} />,
+            key: "subs1",
+            label: "Nodes",
+            icon: <BorderOuterOutlined />,
+            children: [
+                {
+                    key: "subs1-input",
+                    label: "Input",
+                    children: [
+                        {
+                            key: "1",
+                            label: (
+                                <FileDataWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
+                        },
+                    ],
+                },
+            ],
         },
-        { key: "2", icon: <DesktopOutlined />, label: "Option 2" },
-        { key: "3", icon: <ContainerOutlined />, label: "Option 3" },
     ];
 
     return (

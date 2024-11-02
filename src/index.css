@@ -39,11 +39,12 @@ body,
     padding: 4px;
     border: 1px solid !important;
     border-radius: 2px;
-    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: grab;
+    gap: 8px;
+    border-radius: 5px;
 }
 
 .dndflow .dndnode:hover {
@@ -114,4 +115,8 @@ body,
     .dndflow aside {
         order: 1;
     }
+}
+
+.ant-menu .ant-menu-item-icon {
+    font-size: 18px !important;
 }

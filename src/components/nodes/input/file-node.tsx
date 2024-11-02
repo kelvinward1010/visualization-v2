@@ -1,6 +1,7 @@
 import NodeContainer from "@/components/nodecontainer/NodeContainer";
 import { VisuallyHidden } from "@/components/visually-hidden";
 import { convertCsvToJson } from "@/utils/convert";
+import { FileAddOutlined } from "@ant-design/icons";
 import { Button, Card, Typography } from "antd";
 import React, { FC, useRef, useState } from "react";
 import { read, utils } from "xlsx";
@@ -90,7 +91,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart }) => {
             onDragStart={(event) => onDragStart(event, "file")}
             draggable
         >
-            Nhập File
+            <FileAddOutlined /> Nhập File
         </div>
     );
 };
