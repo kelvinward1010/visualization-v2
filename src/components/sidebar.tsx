@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
     BorderOuterOutlined,
-    FileAddOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
 } from "@ant-design/icons";
