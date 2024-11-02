@@ -20,7 +20,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { BoxNode, CardBox, StackNode } from "./BoxNode";
 import useThemeMode from "@/hooks/useThemeMode";
-import { Flex, Typography } from "antd";
+import { Card, Flex, Space, Typography } from "antd";
 import { CloseOutlined, HolderOutlined } from "@ant-design/icons";
 import ModalData from "../modals/ModalData";
 
@@ -230,6 +230,13 @@ function NodeContainer({
                     </Flex>
                 </StackNode>
                 {childrenWithProps}
+                <Space size={"small"} />
+                {atom?.output?.length > 0 && (
+                    <Card>
+                        [DATASET] {atom.output?.length} rows |{" "}
+                        {Object?.keys(atom.output?.[0])?.length} columns
+                    </Card>
+                )}
             </CardBox>
             {!OUTPUT_TYPE_NODE.includes(String(type)) && (
                 <Handle

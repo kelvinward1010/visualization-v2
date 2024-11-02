@@ -14,7 +14,7 @@ function ModalData({ data }: ModalDataProps) {
         <>
             <EyeOutlined onClick={onToggle} />
             <Modal
-                title="Modal 1000px width"
+                title="Preview data"
                 centered
                 open={isOpen}
                 onOk={onOpen}

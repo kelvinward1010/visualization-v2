@@ -3,10 +3,12 @@ import {
     BorderOuterOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
+    SettingFilled,
+    ToolFilled,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
-import { FileDataWrapper } from "./nodes";
+import { FileDataWrapper, HttpRequestWrapper } from "./nodes";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -23,7 +25,6 @@ const SideBar: React.FC = () => {
     ) => {
         event.dataTransfer.setData("application/reactflow", nodeType);
         event.dataTransfer.effectAllowed = "move";
-        console.log("ok");
     };
 
     const items: MenuItem[] = [
@@ -44,9 +45,27 @@ const SideBar: React.FC = () => {
                                 />
                             ),
                         },
+                        {
+                            key: "2",
+                            label: (
+                                <HttpRequestWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
+                        },
                     ],
                 },
             ],
+        },
+        {
+            key: "subs2",
+            label: "Tools",
+            icon: <ToolFilled />,
+        },
+        {
+            key: "subs3",
+            label: "Settings",
+            icon: <SettingFilled />,
         },
     ];
 

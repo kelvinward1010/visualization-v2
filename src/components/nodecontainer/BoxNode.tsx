@@ -17,7 +17,7 @@ interface CardBoxProps {
 export const CardBox = styled.div<CardBoxProps>`
     width: 100%;
     height: 100%;
-    padding: 5px 10px 5px 5px;
+    padding: 0px 10px;
     background-color: ${(props) => props.backgroundColor || "white"};
     color: ${(props) => props.color || "black"};
 `;

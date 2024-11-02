@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart }) => {
 };
 
 interface FileDataWrapperProps {
-    onCallback: (data: { [key: string]: any }) => void;
+    onCallback: (data: { [key: string]: any }) => any;
     id?: string;
     data?: any;
     isConnectable?: boolean;

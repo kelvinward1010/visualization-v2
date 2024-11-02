@@ -15,6 +15,7 @@ import {
     OnNodesChange,
     OnEdgesChange,
     Background,
+    NodeTypes,
 } from "@xyflow/react";
 import "./VisualizationPage.css";
 import { nanoid } from "nanoid";
@@ -22,10 +23,11 @@ import { atomState } from "@/store/atom";
 import { useSetRecoilState } from "recoil";
 import EdgesContainer from "@/components/edgecontainer/EdgeContainer";
 import SideBar from "@/components/sidebar";
-import { FileDataWrapper } from "@/components/nodes";
+import { FileDataWrapper, HttpRequestWrapper } from "@/components/nodes";
 
-const nodeTypes = {
+const nodeTypes: NodeTypes = {
     file: FileDataWrapper as any,
+    http: HttpRequestWrapper as any,
 };
 
 const edgeTypes = {
