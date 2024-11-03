@@ -231,14 +231,14 @@ function NodeContainer({
                         {Object?.keys(atom.output?.[0])?.length} columns
                     </Card>
                 )}
-                <NodeResizeControl
-                    style={controlStyle}
-                    minWidth={200}
-                    minHeight={100}
-                >
-                    <ResizeIcon />
-                </NodeResizeControl>
             </CardBox>
+            <NodeResizeControl
+                style={controlStyle}
+                minWidth={200}
+                minHeight={100}
+            >
+                <ResizeIcon />
+            </NodeResizeControl>
             {!OUTPUT_TYPE_NODE.includes(String(type)) && (
                 <Handle
                     type="source"
