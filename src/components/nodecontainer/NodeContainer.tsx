@@ -46,6 +46,7 @@ interface CustomProps {
 const controlStyle = {
     background: "transparent",
     border: "none",
+    paddingLeft: "20px",
 };
 
 const { Text } = Typography;
@@ -203,13 +204,6 @@ function NodeContainer({
                     className={`nodrag rotateHandle`}
                 />
             )}
-            <NodeResizeControl
-                style={controlStyle}
-                minWidth={200}
-                minHeight={100}
-            >
-                <ResizeIcon />
-            </NodeResizeControl>
             {isLeftHandle && (
                 <Handle
                     type="target"
@@ -237,6 +231,13 @@ function NodeContainer({
                         {Object?.keys(atom.output?.[0])?.length} columns
                     </Card>
                 )}
+                <NodeResizeControl
+                    style={controlStyle}
+                    minWidth={200}
+                    minHeight={100}
+                >
+                    <ResizeIcon />
+                </NodeResizeControl>
             </CardBox>
             {!OUTPUT_TYPE_NODE.includes(String(type)) && (
                 <Handle

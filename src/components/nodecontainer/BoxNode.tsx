@@ -30,8 +30,6 @@ export const BoxNode = styled.div<BoxNodeProps>`
         background-color: ${(props) => (props.selected ? "teal" : "gray")};
     }
     .node-container{
-        width: 100%;
-        height: 100%;
         background-color: ${(props) => (props.theme === "dark" ? "black" : "white")}
         color: ${(props) => (props.theme === "dark" ? "white" : "black")}
     }

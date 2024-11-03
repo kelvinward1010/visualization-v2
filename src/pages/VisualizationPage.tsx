@@ -23,11 +23,16 @@ import { atomState } from "@/store/atom";
 import { useSetRecoilState } from "recoil";
 import EdgesContainer from "@/components/edgecontainer/EdgeContainer";
 import SideBar from "@/components/sidebar";
-import { FileDataWrapper, HttpRequestWrapper } from "@/components/nodes";
+import {
+    FileDataWrapper,
+    HttpRequestWrapper,
+    ExportWrapper,
+} from "@/components/nodes";
 
 const nodeTypes: NodeTypes = {
     file: FileDataWrapper as any,
     http: HttpRequestWrapper as any,
+    export: ExportWrapper as any,
 };
 
 const edgeTypes = {

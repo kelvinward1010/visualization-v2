@@ -70,9 +70,9 @@ body,
     margin-top: 10px;
 }
 
-/* .dndflow .react-flow__node {
-    
-} */
+.dndflow .react-flow__node {
+    height: fit-content;
+}
 
 .dndflow .react-flow__node .react-flow__handle.react-flow__handle-right {
     right: -25px;
@@ -83,7 +83,7 @@ body,
 }
 
 .dndflow .react-flow__node .react-flow__handle.react-flow__handle-left {
-    left: -25px;
+    left: -10px;
     width: 25px;
     height: 100.5%;
     border-top-left-radius: 8px;
