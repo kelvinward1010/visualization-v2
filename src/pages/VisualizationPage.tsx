@@ -27,12 +27,14 @@ import {
     FileDataWrapper,
     HttpRequestWrapper,
     ExportWrapper,
+    ExampleDataWrapper,
 } from "@/components/nodes";
 
 const nodeTypes: NodeTypes = {
     file: FileDataWrapper as any,
     http: HttpRequestWrapper as any,
     export: ExportWrapper as any,
+    "example-data": ExampleDataWrapper as any,
 };
 
 const edgeTypes = {

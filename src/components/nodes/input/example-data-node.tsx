@@ -17,7 +17,7 @@ import React, { ChangeEvent, FC, useEffect, useState } from "react";
 
 interface ExampleDataProps {
     onCallback: (data: { [key: string]: any }) => void;
-    data: any;
+    data?: any;
 }
 
 const ExampleData: React.FC<ExampleDataProps> = ({ onCallback, data }) => {
@@ -30,7 +30,7 @@ const ExampleData: React.FC<ExampleDataProps> = ({ onCallback, data }) => {
             setOption(value);
             onCallback({ output, input: { option: value } });
         })();
-    }, [data, onCallback]);
+    }, []);
 
     async function handleChange(event: ChangeEvent<HTMLSelectElement>) {
         const value = event.target.value;
@@ -41,7 +41,15 @@ const ExampleData: React.FC<ExampleDataProps> = ({ onCallback, data }) => {
 
     return (
         <Card>
-            <select value={option} onChange={handleChange}>
+            <select
+                style={{
+                    border: "1px solid teal",
+                    padding: "3px 5px",
+                    borderRadius: "3px",
+                }}
+                value={option}
+                onChange={handleChange}
+            >
                 <option value="countries_indicators">
                     Countries Indicator
                 </option>
@@ -142,8 +150,8 @@ export const ExampleDataWrapper: React.FC<ExampleDataWrapperProps> & {
     Sidebar: FC<SidebarProps>;
 } = (props) => {
     return (
-        <NodeContainer {...props} label="Nhập File">
-            <ExampleData onCallback={props.onCallback} data={props.data} />
+        <NodeContainer {...props} label="Example Data">
+            <ExampleData onCallback={props.onCallback} />
         </NodeContainer>
     );
 };

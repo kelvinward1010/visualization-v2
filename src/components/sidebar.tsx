@@ -8,7 +8,12 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Menu } from "antd";
-import { FileDataWrapper, HttpRequestWrapper, ExportWrapper } from "./nodes";
+import {
+    FileDataWrapper,
+    HttpRequestWrapper,
+    ExportWrapper,
+    ExampleDataWrapper,
+} from "./nodes";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -49,6 +54,14 @@ const SideBar: React.FC = () => {
                             key: "input-2",
                             label: (
                                 <HttpRequestWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
+                        },
+                        {
+                            key: "input-3",
+                            label: (
+                                <ExampleDataWrapper.Sidebar
                                     onDragStart={onDragStart}
                                 />
                             ),
