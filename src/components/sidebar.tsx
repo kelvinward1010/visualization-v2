@@ -13,6 +13,7 @@ import {
     HttpRequestWrapper,
     ExportWrapper,
     ExampleDataWrapper,
+    SliceNodeWrapper,
 } from "./nodes";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -88,7 +89,11 @@ const SideBar: React.FC = () => {
                     children: [
                         {
                             key: "transform-1",
-                            label: "node",
+                            label: (
+                                <SliceNodeWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
                         },
                     ],
                 },

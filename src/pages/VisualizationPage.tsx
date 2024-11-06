@@ -28,6 +28,7 @@ import {
     HttpRequestWrapper,
     ExportWrapper,
     ExampleDataWrapper,
+    SliceNodeWrapper,
 } from "@/components/nodes";
 
 const nodeTypes: NodeTypes = {
@@ -35,6 +36,7 @@ const nodeTypes: NodeTypes = {
     http: HttpRequestWrapper as any,
     export: ExportWrapper as any,
     "example-data": ExampleDataWrapper as any,
+    slice: SliceNodeWrapper as any,
 };
 
 const edgeTypes = {
