@@ -69,6 +69,15 @@ const RandomNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
                     <Space>
                         <Button onClick={handleRandom}>Random</Button>
                     </Space>
+                    <div>
+                        {index > atomParent?.data?.output?.length && (
+                            <>
+                                <Text type={"danger"}>
+                                    Random quantity can't above length of data
+                                </Text>
+                            </>
+                        )}
+                    </div>
                 </>
             )}
         </Card>

@@ -30,6 +30,7 @@ import {
     ExampleDataWrapper,
     SliceNodeWrapper,
     RandomNodeWrapper,
+    GroupNodeWrapper,
 } from "@/components/nodes";
 
 const nodeTypes: NodeTypes = {
@@ -39,6 +40,7 @@ const nodeTypes: NodeTypes = {
     "example-data": ExampleDataWrapper as any,
     slice: SliceNodeWrapper as any,
     random: RandomNodeWrapper as any,
+    group: GroupNodeWrapper as any,
 };
 
 const edgeTypes = {
