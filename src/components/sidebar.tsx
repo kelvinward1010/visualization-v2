@@ -14,6 +14,7 @@ import {
     ExportWrapper,
     ExampleDataWrapper,
     SliceNodeWrapper,
+    RandomNodeWrapper,
 } from "./nodes";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -91,6 +92,14 @@ const SideBar: React.FC = () => {
                             key: "transform-1",
                             label: (
                                 <SliceNodeWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
+                        },
+                        {
+                            key: "transform-2",
+                            label: (
+                                <RandomNodeWrapper.Sidebar
                                     onDragStart={onDragStart}
                                 />
                             ),

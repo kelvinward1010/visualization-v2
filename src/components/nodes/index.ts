@@ -8,3 +8,4 @@ export { ExportWrapper } from "./misc/export-node";
 
 //transform
 export { SliceNodeWrapper } from "./transform/slice-node";
+export { RandomNodeWrapper } from "./transform/random-node";

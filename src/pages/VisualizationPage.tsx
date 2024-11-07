@@ -29,6 +29,7 @@ import {
     ExportWrapper,
     ExampleDataWrapper,
     SliceNodeWrapper,
+    RandomNodeWrapper,
 } from "@/components/nodes";
 
 const nodeTypes: NodeTypes = {
@@ -37,6 +38,7 @@ const nodeTypes: NodeTypes = {
     export: ExportWrapper as any,
     "example-data": ExampleDataWrapper as any,
     slice: SliceNodeWrapper as any,
+    random: RandomNodeWrapper as any,
 };
 
 const edgeTypes = {

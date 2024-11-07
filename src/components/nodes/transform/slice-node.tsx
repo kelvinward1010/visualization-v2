@@ -1,6 +1,6 @@
 import NodeContainer from "@/components/nodecontainer/NodeContainer";
 import { atomState } from "@/store/atom";
-import { FileAddOutlined } from "@ant-design/icons";
+import { ScissorOutlined } from "@ant-design/icons";
 import { getIncomers, useEdges, useNodes, useReactFlow } from "@xyflow/react";
 import { Card, InputNumber, InputNumberProps, Space, Typography } from "antd";
 import React, { FC, useEffect, useState } from "react";
@@ -52,8 +52,6 @@ const SliceNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
         onCallback({ output, input: { fromIndex, toIndex: to } });
     };
 
-    console.log(fromIndex, toIndex);
-
     return (
         <Card>
             {fromIndex === null && toIndex === null ? (
@@ -66,8 +64,8 @@ const SliceNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
                             value={fromIndex}
                             onChange={handleFromIndexChange}
                         />
-                    </Space>{" "}
-                    {"  "}
+                    </Space>
+                    &ensp;
                     <Space>
                         <Text strong>To Index:</Text>
                         <InputNumber value={toIndex} onChange={handleToIndex} />
@@ -103,7 +101,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart }) => {
             onDragStart={(event) => onDragStart(event, "slice")}
             draggable
         >
-            <FileAddOutlined /> Tách dữ liệu
+            <ScissorOutlined /> Tách dữ liệu
         </div>
     );
 };
