@@ -1,13 +1,12 @@
 import NodeContainer from "@/components/nodecontainer/NodeContainer";
 import { atomState } from "@/store/atom";
-import { ScissorOutlined } from "@ant-design/icons";
+import { SwapOutlined } from "@ant-design/icons";
 import { getIncomers, useEdges, useNodes, useReactFlow } from "@xyflow/react";
-import { Card, Select, Typography } from "antd";
+import { Card, Typography } from "antd";
 import React, { FC, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { groups as d3Group } from "d3-array";
 
-const { Option } = Select;
 const { Text } = Typography;
 
 interface FileDataProps {
@@ -36,6 +35,7 @@ const GroupNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
     useEffect(() => {
         if (atomParent?.data) {
             let columnsParent = Object.keys(atomParent.data?.output?.[0] ?? {});
+
             let initialInput = {
                 column:
                     input.column === initialState.column
@@ -52,7 +52,7 @@ const GroupNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
             setColumns([]);
             onCallback({ output: null, input: null });
         }
-    }, [atomParent?.data]);
+    }, [atomParent?.data, input]);
 
     function handleChangeInput(event: Event) {
         let { value, name } = event.target;
@@ -65,19 +65,26 @@ const GroupNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
     return (
         <Card>
             <Text strong>Column name:</Text>
+            <br />
             <select
                 name="column"
                 value={input.column}
                 onChange={handleChangeInput}
+                style={{
+                    width: "100%",
+                    border: "1px solid teal",
+                    padding: "3px 5px",
+                    borderRadius: "5px",
+                }}
             >
                 {columns.length > 0 ? (
-                    columns.map((value) => (
-                        <Option key={value} value={value}>
+                    columns?.map((value) => (
+                        <option key={value} value={value}>
                             {value}
-                        </Option>
+                        </option>
                     ))
                 ) : (
-                    <Text>← kết nối dataset...</Text>
+                    <option>← kết nối dataset...</option>
                 )}
             </select>
         </Card>
@@ -99,10 +106,10 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart }) => {
     return (
         <div
             className="dndnode"
-            onDragStart={(event) => onDragStart(event, "group")}
+            onDragStart={(event) => onDragStart(event, "group-data")}
             draggable
         >
-            <ScissorOutlined /> Nhóm data
+            <SwapOutlined /> Nhóm data
         </div>
     );
 };

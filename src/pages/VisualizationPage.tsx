@@ -40,7 +40,7 @@ const nodeTypes: NodeTypes = {
     "example-data": ExampleDataWrapper as any,
     slice: SliceNodeWrapper as any,
     random: RandomNodeWrapper as any,
-    group: GroupNodeWrapper as any,
+    "group-data": GroupNodeWrapper as any,
 };
 
 const edgeTypes = {
@@ -81,7 +81,7 @@ export function VisualizationPage() {
                 },
             };
 
-            setEdges((eds) => addEdge({ ...connection, edgeBase }, eds));
+            setEdges((eds) => addEdge({ ...connection, ...edgeBase }, eds));
         },
         [setEdges],
     );

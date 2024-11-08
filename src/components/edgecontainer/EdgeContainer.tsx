@@ -7,6 +7,7 @@ import {
     getSmoothStepPath,
     getStraightPath,
     getSimpleBezierPath,
+    BaseEdge,
 } from "@xyflow/react";
 import { edges } from "@/store/edges/stateRecoil";
 import useThemeMode from "@/hooks/useThemeMode";
@@ -54,14 +55,14 @@ const EdgesContainer: React.FC<EdgesContainerProps> = ({
 
     return (
         <>
-            <path
-                id={id}
+            <BaseEdge
+                className="react-flow__edge-path"
                 style={{
                     stroke: isDarkMode ? "white" : "white",
                     strokeWidth: 3,
                 }}
-                className="react-flow__edge-path"
-                d={edgePath}
+                id={id}
+                path={edgePath}
                 markerEnd={markerEnd}
             />
             <EdgeLabelRenderer>
@@ -71,14 +72,14 @@ const EdgesContainer: React.FC<EdgesContainerProps> = ({
                         transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)`,
                         background: "teal",
                         padding: 10,
-                        borderRadius: 5,
+                        borderRadius: "50%",
                         fontSize: 12,
                         fontWeight: 700,
                         color: "white",
                     }}
                     className="nodrag nopan"
                 >
-                    Connected
+                    Ok
                 </div>
             </EdgeLabelRenderer>
         </>
