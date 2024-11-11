@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+.logo {
+    cursor: pointer;
+}
+
 /*CSS mode dark - bright*/
 .light {
     background-color: white !important;

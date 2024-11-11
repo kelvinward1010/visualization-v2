@@ -34,6 +34,7 @@ import {
     PasteNodeWrapper,
     StatsNodeWrapper,
 } from "@/components/nodes";
+import Layout from "./Layout";
 
 const nodeTypes: NodeTypes = {
     file: FileDataWrapper as any,
@@ -141,30 +142,27 @@ export function VisualizationPage() {
     );
 
     return (
-        <div className="visualize">
-            <div className="dndflow">
-                <SideBar />
-                <div className="reactflow-wrapper" ref={reactFlowWrapper}>
-                    <ReactFlow
-                        nodes={nodes}
-                        edges={edges}
-                        onNodesChange={onNodesChange}
-                        onEdgesChange={onEdgesChange}
-                        onInit={setReactFlowInstance}
-                        onConnect={onConnect}
-                        onDrop={onDrop}
-                        onDragOver={onDragOver}
-                        onReconnect={onEdgeUpdate}
-                        edgeTypes={edgeTypes}
-                        nodeTypes={nodeTypes}
-                        fitView
-                    >
-                        <MiniMap />
-                        <Controls />
-                        <Background bgColor="black" />
-                    </ReactFlow>
-                </div>
+        <Layout>
+            <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+                <ReactFlow
+                    nodes={nodes}
+                    edges={edges}
+                    onNodesChange={onNodesChange}
+                    onEdgesChange={onEdgesChange}
+                    onInit={setReactFlowInstance}
+                    onConnect={onConnect}
+                    onDrop={onDrop}
+                    onDragOver={onDragOver}
+                    onReconnect={onEdgeUpdate}
+                    edgeTypes={edgeTypes}
+                    nodeTypes={nodeTypes}
+                    fitView
+                >
+                    <MiniMap />
+                    <Controls />
+                    <Background bgColor="black" />
+                </ReactFlow>
             </div>
-        </div>
+        </Layout>
     );
 }

@@ -19,10 +19,13 @@ import {
     PasteNodeWrapper,
     StatsNodeWrapper,
 } from "./nodes";
+import { useNavigate } from "react-router-dom";
+import { settingsUrl, visualizationUrl } from "@/routes/urls";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const SideBar: React.FC = () => {
+    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
 
     const toggleCollapsed = () => {
@@ -143,12 +146,21 @@ const SideBar: React.FC = () => {
         {
             key: "subs3",
             label: "Settings",
+            onClick: () => navigate(settingsUrl),
             icon: <SettingFilled />,
         },
     ];
 
     return (
         <aside style={{ width: "auto" }}>
+            {collapsed ? null : (
+                <img
+                    onClick={() => navigate(visualizationUrl)}
+                    className="logo"
+                    src={"/logo2.png"}
+                    alt=""
+                />
+            )}
             <Button
                 type="primary"
                 onClick={toggleCollapsed}
