@@ -31,6 +31,8 @@ import {
     SliceNodeWrapper,
     RandomNodeWrapper,
     GroupNodeWrapper,
+    PasteNodeWrapper,
+    StatsNodeWrapper,
 } from "@/components/nodes";
 
 const nodeTypes: NodeTypes = {
@@ -41,6 +43,8 @@ const nodeTypes: NodeTypes = {
     slice: SliceNodeWrapper as any,
     random: RandomNodeWrapper as any,
     "group-data": GroupNodeWrapper as any,
+    "paste-node": PasteNodeWrapper as any,
+    "stats-node": StatsNodeWrapper as any,
 };
 
 const edgeTypes = {

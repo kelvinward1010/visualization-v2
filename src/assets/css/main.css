@@ -65,3 +65,16 @@
     left: 4px;
     top: 5px;
 }
+
+.select-custom {
+    width: 100%;
+    border: 1px solid teal;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+.textarea-custom {
+    width: 100%;
+    border: 1px solid teal;
+    border-radius: 5px;
+}

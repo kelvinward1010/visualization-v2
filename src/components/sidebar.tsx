@@ -16,6 +16,8 @@ import {
     SliceNodeWrapper,
     RandomNodeWrapper,
     GroupNodeWrapper,
+    PasteNodeWrapper,
+    StatsNodeWrapper,
 } from "./nodes";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -69,6 +71,14 @@ const SideBar: React.FC = () => {
                                 />
                             ),
                         },
+                        {
+                            key: "input-4",
+                            label: (
+                                <PasteNodeWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
+                        },
                     ],
                 },
                 {
@@ -79,6 +89,14 @@ const SideBar: React.FC = () => {
                             key: "misc-1",
                             label: (
                                 <ExportWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
+                        },
+                        {
+                            key: "misc-2",
+                            label: (
+                                <StatsNodeWrapper.Sidebar
                                     onDragStart={onDragStart}
                                 />
                             ),

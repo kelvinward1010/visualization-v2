@@ -93,7 +93,7 @@ body,
 .dndflow .react-flow__node .react-flow__handle.handle-left-custom {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    left: -35px;
+    left: -20px;
     height: 18px;
     width: 18px;
 }

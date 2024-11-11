@@ -70,12 +70,7 @@ const GroupNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
                 name="column"
                 value={input.column}
                 onChange={handleChangeInput}
-                style={{
-                    width: "100%",
-                    border: "1px solid teal",
-                    padding: "3px 5px",
-                    borderRadius: "5px",
-                }}
+                className="select-custom"
             >
                 {columns.length > 0 ? (
                     columns?.map((value) => (
