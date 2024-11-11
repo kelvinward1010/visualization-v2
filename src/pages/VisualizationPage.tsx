@@ -22,7 +22,6 @@ import { nanoid } from "nanoid";
 import { atomState } from "@/store/atom";
 import { useSetRecoilState } from "recoil";
 import EdgesContainer from "@/components/edgecontainer/EdgeContainer";
-import SideBar from "@/components/sidebar";
 import {
     FileDataWrapper,
     HttpRequestWrapper,
