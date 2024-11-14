@@ -8,12 +8,12 @@ import { useRecoilValue } from "recoil";
 
 const { Text } = Typography;
 
-interface FileDataProps {
+interface SliceNodeProps {
     onCallback: (data: { [key: string]: any }) => void;
     id: string;
 }
 
-const SliceNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
+const SliceNode: React.FC<SliceNodeProps> = ({ onCallback, id }) => {
     const { getNode } = useReactFlow<any>();
     const [fromIndex, setFromIndex] = useState<any>(null);
     const [toIndex, setToIndex] = useState<any>(null);

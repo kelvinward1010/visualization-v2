@@ -13,7 +13,7 @@ interface FileData {
     input?: any;
 }
 
-interface HttpRequestProps {
+interface ExportProps {
     onCallback: (data: FileData) => void;
     id: string;
 }
@@ -28,7 +28,7 @@ const initialState: {
     conditionValue: undefined,
 };
 
-const Export: React.FC<HttpRequestProps> = ({ onCallback, id }) => {
+const Export: React.FC<ExportProps> = ({ onCallback, id }) => {
     const { getNode } = useReactFlow<any>();
     const allNodes = useNodes();
     const allEdges = useEdges();

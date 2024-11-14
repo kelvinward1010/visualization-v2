@@ -3,6 +3,7 @@ import {
     BorderOuterOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
+    OpenAIOutlined,
     SettingFilled,
     ToolFilled,
 } from "@ant-design/icons";
@@ -18,9 +19,14 @@ import {
     GroupNodeWrapper,
     PasteNodeWrapper,
     StatsNodeWrapper,
+    ColumnBasicChartNodeWrapper,
 } from "./nodes";
 import { useNavigate } from "react-router-dom";
-import { settingsUrl, visualizationUrl } from "@/routes/urls";
+import {
+    flatformaichatboxUrl,
+    settingsUrl,
+    visualizationUrl,
+} from "@/routes/urls";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -136,6 +142,20 @@ const SideBar: React.FC = () => {
                         },
                     ],
                 },
+                {
+                    key: "subs1-visualize",
+                    label: "Visualize",
+                    children: [
+                        {
+                            key: "visualize-1",
+                            label: (
+                                <ColumnBasicChartNodeWrapper.Sidebar
+                                    onDragStart={onDragStart}
+                                />
+                            ),
+                        },
+                    ],
+                },
             ],
         },
         {
@@ -145,6 +165,12 @@ const SideBar: React.FC = () => {
         },
         {
             key: "subs3",
+            label: "Flatform AI chatbox",
+            onClick: () => navigate(flatformaichatboxUrl),
+            icon: <OpenAIOutlined />,
+        },
+        {
+            key: "subs4",
             label: "Settings",
             onClick: () => navigate(settingsUrl),
             icon: <SettingFilled />,

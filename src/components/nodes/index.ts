@@ -12,3 +12,7 @@ export { StatsNodeWrapper } from "./misc/stats-node";
 export { SliceNodeWrapper } from "./transform/slice-node";
 export { RandomNodeWrapper } from "./transform/random-node";
 export { GroupNodeWrapper } from "./transform/group-node";
+
+//Visualize
+////Columns
+export { ColumnBasicChartNodeWrapper } from "./visualize/columns/column-basic-chart";

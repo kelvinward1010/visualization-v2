@@ -9,7 +9,7 @@ import { groups as d3Group } from "d3-array";
 
 const { Text } = Typography;
 
-interface FileDataProps {
+interface GroupNodeProps {
     onCallback: (data: { [key: string]: any }) => void;
     id: string;
 }
@@ -22,7 +22,7 @@ const initialState = {
     column: "",
 };
 
-const GroupNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
+const GroupNode: React.FC<GroupNodeProps> = ({ onCallback, id }) => {
     const { getNode } = useReactFlow<any>();
     const allNodes = useNodes();
     const allEdges = useEdges();

@@ -32,6 +32,7 @@ import {
     GroupNodeWrapper,
     PasteNodeWrapper,
     StatsNodeWrapper,
+    ColumnBasicChartNodeWrapper,
 } from "@/components/nodes";
 import Layout from "./Layout";
 
@@ -45,6 +46,7 @@ const nodeTypes: NodeTypes = {
     "group-data": GroupNodeWrapper as any,
     "paste-node": PasteNodeWrapper as any,
     "stats-node": StatsNodeWrapper as any,
+    "column-basic-chart": ColumnBasicChartNodeWrapper as any,
 };
 
 const edgeTypes = {

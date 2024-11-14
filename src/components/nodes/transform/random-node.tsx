@@ -15,12 +15,12 @@ import { useRecoilValue } from "recoil";
 
 const { Text } = Typography;
 
-interface FileDataProps {
+interface RandomNodeProps {
     onCallback: (data: { [key: string]: any }) => void;
     id: string;
 }
 
-const RandomNode: React.FC<FileDataProps> = ({ onCallback, id }) => {
+const RandomNode: React.FC<RandomNodeProps> = ({ onCallback, id }) => {
     const { getNode } = useReactFlow<any>();
     const [index, setIndex] = useState<any>(null);
     const allNodes = useNodes();
