@@ -27,7 +27,7 @@ export function FlatformAIChatboxPage() {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer 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`,
+                        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
                         "Content-Type": "application/json",
                     },
                 },
