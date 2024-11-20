@@ -16,3 +16,4 @@ export { GroupNodeWrapper } from "./transform/group-node";
 //Visualize
 ////Columns
 export { ColumnBasicChartNodeWrapper } from "./visualize/columns/column-basic-chart";
+export { LineBasicChartWrapper } from "./visualize/lines/line-basic-chart";

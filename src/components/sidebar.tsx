@@ -20,6 +20,7 @@ import {
     PasteNodeWrapper,
     StatsNodeWrapper,
     ColumnBasicChartNodeWrapper,
+    LineBasicChartWrapper,
 } from "./nodes";
 import { useNavigate } from "react-router-dom";
 import {
@@ -176,7 +177,11 @@ const SideBar: React.FC = () => {
                             children: [
                                 {
                                     key: "visualize-3-1",
-                                    label: "Example",
+                                    label: (
+                                        <LineBasicChartWrapper.Sidebar
+                                            onDragStart={onDragStart}
+                                        />
+                                    ),
                                 },
                             ],
                         },
