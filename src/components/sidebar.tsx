@@ -148,11 +148,37 @@ const SideBar: React.FC = () => {
                     children: [
                         {
                             key: "visualize-1",
-                            label: (
-                                <ColumnBasicChartNodeWrapper.Sidebar
-                                    onDragStart={onDragStart}
-                                />
-                            ),
+                            label: "Columns",
+                            children: [
+                                {
+                                    key: "visualize-1-1",
+                                    label: (
+                                        <ColumnBasicChartNodeWrapper.Sidebar
+                                            onDragStart={onDragStart}
+                                        />
+                                    ),
+                                },
+                            ],
+                        },
+                        {
+                            key: "visualize-2",
+                            label: "Area",
+                            children: [
+                                {
+                                    key: "visualize-2-1",
+                                    label: "Example",
+                                },
+                            ],
+                        },
+                        {
+                            key: "visualize-3",
+                            label: "Line",
+                            children: [
+                                {
+                                    key: "visualize-3-1",
+                                    label: "Example",
+                                },
+                            ],
                         },
                     ],
                 },
