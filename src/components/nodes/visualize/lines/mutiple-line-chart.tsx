@@ -10,7 +10,7 @@ import { Line } from "@ant-design/plots";
 
 const { Text } = Typography;
 
-interface LineBasicChartProps {
+interface MutipleLineChartProps {
     onCallback: (data: { [key: string]: any }) => void;
     id: string;
 }
@@ -22,18 +22,21 @@ interface Event {
 const initialState = {
     xColumn: "",
     yColumn: "",
+    zColumn: "",
 };
 
-const LineBasicChartNode: React.FC<LineBasicChartProps> = ({
+const MutipleLineChartNode: React.FC<MutipleLineChartProps> = ({
     onCallback,
     id,
 }) => {
     const { getNode } = useReactFlow<any>();
     const allNodes = useNodes();
     const allEdges = useEdges();
-    const [input, setInput] = useState<{ xColumn: string; yColumn: string }>(
-        initialState,
-    );
+    const [input, setInput] = useState<{
+        xColumn: string;
+        yColumn: string;
+        zColumn: string;
+    }>(initialState);
     const [columns, setColumns] = useState<string[]>([]);
     const [output, setOutput] = useState<any[]>([]);
     const nodeParent = getIncomers(getNode(id), allNodes, allEdges)[0];
@@ -50,6 +53,9 @@ const LineBasicChartNode: React.FC<LineBasicChartProps> = ({
                     : columnsParent[0],
                 yColumn: columnsParent.includes(input.yColumn)
                     ? input.yColumn
+                    : columnsParent[0],
+                zColumn: columnsParent.includes(input.zColumn)
+                    ? input.zColumn
                     : columnsParent[0],
             };
             let output = moveColumnsOfData(
@@ -83,18 +89,10 @@ const LineBasicChartNode: React.FC<LineBasicChartProps> = ({
         data,
         xField: "xColumn",
         yField: "yColumn",
-        point: {
-            shapeField: "square",
-            sizeField: 4,
-        },
-        interaction: {
-            tooltip: {
-                marker: false,
-            },
-        },
-        style: {
-            lineWidth: 2,
-        },
+        sizeField: "value",
+        shapeField: "trail",
+        legend: { size: false },
+        colorField: "zColumn",
     };
 
     return (
@@ -135,6 +133,22 @@ const LineBasicChartNode: React.FC<LineBasicChartProps> = ({
                         </select>
                     </Flex>
                     <br />
+                    <Flex justify={"flex-start"} gap={10}>
+                        <Text>Z-axis</Text>
+                        <select
+                            name="zColumn"
+                            value={input.zColumn}
+                            onChange={handleChangeInput}
+                            className="select-custom"
+                        >
+                            {columns?.map((value) => (
+                                <option key={value} value={value}>
+                                    {value}
+                                </option>
+                            ))}
+                        </select>
+                    </Flex>
+                    <br />
                     <Line {...config} />
                 </>
             )}
@@ -153,15 +167,15 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart }) => {
     return (
         <div
             className="dndnode"
-            onDragStart={(event) => onDragStart(event, "line-basic-chart")}
+            onDragStart={(event) => onDragStart(event, "mutiple-line-chart")}
             draggable
         >
-            <LineChartOutlined /> Line basic
+            <LineChartOutlined /> Mutiple line chart
         </div>
     );
 };
 
-interface ColumnBasicChartNodeWrapperProps {
+interface MutipleLineNodeWrapperProps {
     onCallback: (data: { [key: string]: any }) => any;
     id: string;
     data?: any;
@@ -169,14 +183,18 @@ interface ColumnBasicChartNodeWrapperProps {
     [key: string]: any;
 }
 
-export const LineBasicChartWrapper: React.FC<ColumnBasicChartNodeWrapperProps> & {
+export const MutipleLineChartWrapper: React.FC<MutipleLineNodeWrapperProps> & {
     Sidebar: FC<SidebarProps>;
 } = (props) => {
     return (
-        <NodeContainer isLeftHandle={true} {...props} label="Line basic">
-            <LineBasicChartNode onCallback={props.onCallback} id={props.id} />
+        <NodeContainer
+            isLeftHandle={true}
+            {...props}
+            label="Mutiple line chart"
+        >
+            <MutipleLineChartNode onCallback={props.onCallback} id={props.id} />
         </NodeContainer>
     );
 };
 
-LineBasicChartWrapper.Sidebar = Sidebar;
+MutipleLineChartWrapper.Sidebar = Sidebar;

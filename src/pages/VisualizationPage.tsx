@@ -34,6 +34,7 @@ import {
     StatsNodeWrapper,
     ColumnBasicChartNodeWrapper,
     LineBasicChartWrapper,
+    MutipleLineChartWrapper,
 } from "@/components/nodes";
 import Layout from "./Layout";
 
@@ -49,6 +50,7 @@ const nodeTypes: NodeTypes = {
     "stats-node": StatsNodeWrapper as any,
     "column-basic-chart": ColumnBasicChartNodeWrapper as any,
     "line-basic-chart": LineBasicChartWrapper as any,
+    "mutiple-line-chart": MutipleLineChartWrapper as any,
 };
 
 const edgeTypes = {
