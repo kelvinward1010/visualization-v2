@@ -23,6 +23,7 @@ import {
     LineBasicChartWrapper,
     MutipleLineChartWrapper,
     AreaBasicChartWrapper,
+    BarBasicChartWrapper,
 } from "./nodes";
 import { useNavigate } from "react-router-dom";
 import {
@@ -193,6 +194,20 @@ const SideBar: React.FC = () => {
                                     key: "visualize-3-2",
                                     label: (
                                         <MutipleLineChartWrapper.Sidebar
+                                            onDragStart={onDragStart}
+                                        />
+                                    ),
+                                },
+                            ],
+                        },
+                        {
+                            key: "visualize-4",
+                            label: "Bar",
+                            children: [
+                                {
+                                    key: "visualize-4-1",
+                                    label: (
+                                        <BarBasicChartWrapper.Sidebar
                                             onDragStart={onDragStart}
                                         />
                                     ),

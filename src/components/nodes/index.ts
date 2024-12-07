@@ -23,3 +23,6 @@ export { ColumnBasicChartNodeWrapper } from "./visualize/columns/column-basic-ch
 ////Lines
 export { LineBasicChartWrapper } from "./visualize/lines/line-basic-chart";
 export { MutipleLineChartWrapper } from "./visualize/lines/mutiple-line-chart";
+
+////Bars
+export { BarBasicChartWrapper } from "./visualize/bars/bar-basic-chart";
