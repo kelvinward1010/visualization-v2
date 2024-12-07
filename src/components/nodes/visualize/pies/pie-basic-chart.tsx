@@ -1,16 +1,16 @@
 import NodeContainer from "@/components/nodecontainer/NodeContainer";
 import { atomState } from "@/store/atom";
-import { BarChartOutlined } from "@ant-design/icons";
+import { PieChartOutlined } from "@ant-design/icons";
 import { getIncomers, useEdges, useNodes, useReactFlow } from "@xyflow/react";
 import { Card, Flex, Typography } from "antd";
 import React, { FC, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { moveColumnsOfData } from "@/utils/data-transfer";
-import { Bar } from "@ant-design/plots";
+import { Pie } from "@ant-design/plots";
 
 const { Text } = Typography;
 
-interface BarBasicChartProps {
+interface PieBasicChartProps {
     onCallback: (data: { [key: string]: any }) => void;
     id: string;
 }
@@ -24,7 +24,7 @@ const initialState = {
     yColumn: "",
 };
 
-const BarBasicChartNode: React.FC<BarBasicChartProps> = ({
+const PieBasicChartNode: React.FC<PieBasicChartProps> = ({
     onCallback,
     id,
 }) => {
@@ -80,19 +80,22 @@ const BarBasicChartNode: React.FC<BarBasicChartProps> = ({
     const data = output;
 
     const config = {
-        data: data,
+        data,
         xField: "xColumn",
         yField: "yColumn",
-        sort: {
-            reverse: true,
-        },
+        angleField: "yColumn",
+        colorField: "xColumn",
         label: {
             text: "yColumn",
-            formatter: ".1%",
+            style: {
+                fontWeight: "bold",
+            },
         },
-        axis: {
-            y: {
-                labelFormatter: ".0%",
+        legend: {
+            color: {
+                title: false,
+                position: "right",
+                rowPadding: 5,
             },
         },
     };
@@ -135,7 +138,7 @@ const BarBasicChartNode: React.FC<BarBasicChartProps> = ({
                         </select>
                     </Flex>
                     <br />
-                    <Bar {...config} />
+                    <Pie {...config} />
                 </>
             )}
         </Card>
@@ -153,15 +156,15 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart }) => {
     return (
         <div
             className="dndnode"
-            onDragStart={(event) => onDragStart(event, "bar-basic-chart")}
+            onDragStart={(event) => onDragStart(event, "pie-basic-chart")}
             draggable
         >
-            <BarChartOutlined /> Bar basic
+            <PieChartOutlined /> Pie basic
         </div>
     );
 };
 
-interface BarBasicChartNodeWrapperProps {
+interface PieBasicChartNodeWrapperProps {
     onCallback: (data: { [key: string]: any }) => any;
     id: string;
     data?: any;
@@ -169,14 +172,14 @@ interface BarBasicChartNodeWrapperProps {
     [key: string]: any;
 }
 
-export const BarBasicChartWrapper: React.FC<BarBasicChartNodeWrapperProps> & {
+export const PieBasicChartWrapper: React.FC<PieBasicChartNodeWrapperProps> & {
     Sidebar: FC<SidebarProps>;
 } = (props) => {
     return (
-        <NodeContainer isLeftHandle={true} {...props} label="Bar basic">
-            <BarBasicChartNode onCallback={props.onCallback} id={props.id} />
+        <NodeContainer isLeftHandle={true} {...props} label="Pie basic">
+            <PieBasicChartNode onCallback={props.onCallback} id={props.id} />
         </NodeContainer>
     );
 };
 
-BarBasicChartWrapper.Sidebar = Sidebar;
+PieBasicChartWrapper.Sidebar = Sidebar;

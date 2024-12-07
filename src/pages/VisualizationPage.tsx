@@ -37,6 +37,7 @@ import {
     MutipleLineChartWrapper,
     AreaBasicChartWrapper,
     BarBasicChartWrapper,
+    PieBasicChartWrapper,
 } from "@/components/nodes";
 import Layout from "./Layout";
 
@@ -55,6 +56,7 @@ const nodeTypes: NodeTypes = {
     "mutiple-line-chart": MutipleLineChartWrapper as any,
     "area-basic-chart": AreaBasicChartWrapper as any,
     "bar-basic-chart": BarBasicChartWrapper as any,
+    "pie-basic-chart": PieBasicChartWrapper as any,
 };
 
 const edgeTypes = {

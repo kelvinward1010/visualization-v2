@@ -26,3 +26,6 @@ export { MutipleLineChartWrapper } from "./visualize/lines/mutiple-line-chart";
 
 ////Bars
 export { BarBasicChartWrapper } from "./visualize/bars/bar-basic-chart";
+
+////Bars
+export { PieBasicChartWrapper } from "./visualize/pies/pie-basic-chart";
