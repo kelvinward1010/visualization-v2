@@ -2,7 +2,9 @@ pipeline {
     agent any
 
     tools {
-        nodejs: "nodejs"
+        nodejs "node_20" // Setup in Tools of Manage Jenkins
+        jdk "jdk"
+        maven "maven3"
     }
 
     environment {
@@ -28,21 +30,21 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}").push()
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         script {
+        //             docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}").push()
+        //         }
+        //     }
+        // }
     }
 
-    post {
-        success {
-            slackSend channel: '#your-channel', color: 'good', message: "Deployment successful for build ${env.BUILD_ID}."
-        }
-        failure {
-            slackSend channel: '#your-channel', color: 'danger', message: "Deployment failed for build ${env.BUILD_ID}."
+    post { 
+        success { 
+            echo "Deployment Successful"
+        }  
+        failure { 
+            echo "Deployment Failed"
         }
     }
 }
