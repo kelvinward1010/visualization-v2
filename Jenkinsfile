@@ -1,9 +1,12 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs: "nodejs"
+    }
+
     environment {
-        DOCKER_IMAGE = 'visualize'
-        VERCEL_TOKEN = 'RdknDK1TJj9s8LXtNoFqQuRz'
+        DOCKER_IMAGE = 'kelvinward1010/visualize'
     }
 
     stages {
@@ -29,16 +32,6 @@ pipeline {
             steps {
                 script {
                     docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}").push()
-                }
-            }
-        }
-
-        stage('Deploy to Vercel') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'vercel-token', variable: 'VERCEL_TOKEN')]) {
-                        sh 'npx vercel --prod --token $VERCEL_TOKEN'
-                    }
                 }
             }
         }
