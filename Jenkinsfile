@@ -9,6 +9,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'kelvinward1010/visualize'
+        VERCEL_TOKEN = credentials('vercel-token')
     }
 
     stages {
