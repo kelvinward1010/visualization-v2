@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import axios from "axios";
 import "./FlatformAIChatboxPage.css";
 import useThemeMode from "@/hooks/useThemeMode";
+import { Flex } from "antd";
 
 interface Message {
     user: string;
@@ -67,16 +68,18 @@ export function FlatformAIChatboxPage() {
                         </div>
                     ))}
                 </div>
-                <input
-                    type="text"
-                    className="input-chatbox"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                />
-                <button className="button-chatbox" onClick={sendMessage}>
-                    Send
-                </button>
+                <Flex align={"center"} gap={1} justify={"center"}>
+                    <input
+                        type="text"
+                        className="input-chatbox"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                    />
+                    <button className="button-chatbox" onClick={sendMessage}>
+                        Send
+                    </button>
+                </Flex>
             </div>
         </Layout>
     );
