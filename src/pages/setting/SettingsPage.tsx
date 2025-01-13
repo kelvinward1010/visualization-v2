@@ -1,5 +1,5 @@
 import { Flex } from "antd";
-import Layout from "./Layout";
+import Layout from "../Layout";
 import "./SettingsPage.css";
 import useThemeMode from "@/hooks/useThemeMode";
 import { IconMoonFilled, IconSun } from "@tabler/icons-react";

@@ -1,7 +1,7 @@
-import { VisualizationPage } from "@/pages/VisualizationPage";
+import { VisualizationPage } from "@/pages/home/VisualizationPage";
 import { flatformaichatboxUrl, settingsUrl, visualizationUrl } from "./urls";
 import { createBrowserRouter } from "react-router-dom";
-import { SettingsPage } from "@/pages/SettingsPage";
+import { SettingsPage } from "@/pages/setting/SettingsPage";
 import { FlatformAIChatboxPage } from "@/pages/FlatformAIChatboxPage";
 
 export const routerConfig = createBrowserRouter([

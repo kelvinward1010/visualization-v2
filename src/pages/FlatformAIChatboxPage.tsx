@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "./Layout";
 import axios from "axios";
 import "./FlatformAIChatboxPage.css";
+import useThemeMode from "@/hooks/useThemeMode";
 
 interface Message {
     user: string;
@@ -11,6 +12,7 @@ interface Message {
 export function FlatformAIChatboxPage() {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState<string>("");
+    const { isDarkMode } = useThemeMode();
 
     const sendMessage = async () => {
         if (input.trim() === "") return;
@@ -47,8 +49,13 @@ export function FlatformAIChatboxPage() {
 
     return (
         <Layout>
-            <div className="chatbox-container">
-                Can't use because it's not free
+            <div
+                style={{ color: `${isDarkMode} ? 'white': 'black'` }}
+                className={`chatbox-container ${isDarkMode ? "dark" : "light"}`}
+            >
+                <div className="chatbox-header">
+                    <h2>Flatform AI Chatbox</h2>
+                </div>
                 <div className="chatbox-messages">
                     {messages.map((msg, index) => (
                         <div

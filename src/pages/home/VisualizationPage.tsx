@@ -39,7 +39,7 @@ import {
     BarBasicChartWrapper,
     PieBasicChartWrapper,
 } from "@/components/nodes";
-import Layout from "./Layout";
+import Layout from "../Layout";
 
 const nodeTypes: NodeTypes = {
     file: FileDataWrapper as any,
